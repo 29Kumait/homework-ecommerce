@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
 import ProductsList from "./components/ProductsList/ProductsList";
@@ -12,18 +12,26 @@ const categories = [
   { id: 4, category: "women's clothing" },
 ];
 
+
+
+// function Home() {
+//   return <div>Welcome to the Home Page!</div>;
+// }
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   return (
     <Router>
       <div>
-        <Header />
+        <Link to="/">
+          <Header />
+        </Link>
         <Button categories={categories} onClick={setSelectedCategory} />
 
         <Routes>
           <Route path="/:category" element={<ProductsList selectedCategory={selectedCategory} />} />
-          <Route path="/" element={<Navigate to="/electronics" />} />
+          {/* <Route path="/" element={<Home />} /> */}
         </Routes>
       </div>
     </Router>
