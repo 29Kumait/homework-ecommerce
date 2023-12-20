@@ -4,7 +4,6 @@ export default [
   "FAKE: men's clothing",
   "FAKE: women's clothing",
 ];
-
 // export const categories = [
 //   { id: 1, category: "electronics" },
 //   { id: 2, category: "jewelery" },

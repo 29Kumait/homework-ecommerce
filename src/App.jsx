@@ -14,9 +14,9 @@ const categories = [
 
 
 
-// function Home() {
-//   return <div>Welcome to the Home Page!</div>;
-// }
+function Home() {
+  return <div></div>;
+}
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -31,7 +31,7 @@ function App() {
 
         <Routes>
           <Route path="/:category" element={<ProductsList selectedCategory={selectedCategory} />} />
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>
