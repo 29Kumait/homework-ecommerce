@@ -12,29 +12,35 @@ const categories = [
   { id: 4, category: "women's clothing" },
 ];
 
-
-
 function Home() {
-  return <div></div>;
+  // Add content or functionality for your home page here
+  return <div>Welcome to the Economise App</div>;
 }
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
+  console.log(selectedCategory);
 
   return (
-    <Router>
-      <div>
-        <Link to="/">
-          <Header />
-        </Link>
-        <Button categories={categories} onClick={setSelectedCategory} />
+      <Router>
+        <div>
+          <Link to="/">
+            <Header />
+          </Link>
+          <Button categories={categories} onClick={setSelectedCategory} />
 
-        <Routes>
-          <Route path="/:category" element={<ProductsList selectedCategory={selectedCategory} />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
-    </Router>
+          <Routes>
+            {categories.map((category) => (
+                <Route
+                    key={category.id}
+                    path={`/category/${category.category}`}
+                    element={<ProductsList selectedCategory={category.category} />}
+                />
+            ))}
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+      </Router>
   );
 }
 

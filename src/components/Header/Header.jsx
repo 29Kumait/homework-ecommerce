@@ -1,17 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/");
-  };
-
   return (
-    <header onClick={handleClick}>
-      <h1>Products</h1>
+    <header>
+      <h1>
+        <Link to="/">Products</Link>
+      </h1>
     </header>
   );
 }
 
 export default Header;
+
+// Path: src/components/Header/Header.js

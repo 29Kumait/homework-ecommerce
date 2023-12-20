@@ -1,26 +1,42 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import "./Button.css";
 
 function Button({ categories, onClick }) {
+  const navigate = useNavigate();
+
+  const handleButtonClick = (category) => {
+    onClick(category); // Update selected category
+    navigate(`/category/${category}`); // Navigate to the category page
+  };
+
   return (
-    <div>
-      {categories.map((categoryElement, index) => (
-        <button key={index} onClick={() => onClick(categoryElement.category)}>
-          {categoryElement.category}
-        </button>
-      ))}
-    </div>
+      <div>
+        {categories.map((categoryElement) => (
+            <button
+                key={categoryElement.id}
+                onClick={() => handleButtonClick(categoryElement.category)}
+            >
+              {categoryElement.category}
+            </button>
+        ))}
+      </div>
   );
 }
 
 Button.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.shape({
-    category: PropTypes.string.isRequired
-  })).isRequired,
-  onClick: PropTypes.func.isRequired
+  categories: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        category: PropTypes.string.isRequired,
+      })
+  ).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
+
 export default Button;
+
 
 ///* 2nd way */
 
