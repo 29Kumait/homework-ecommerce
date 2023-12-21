@@ -1,20 +1,55 @@
+/*!* Button.css *!*/
+/*.button-container {*/
+/*    text-align: center;*/
+/*    margin: 20px 0;*/
+/*}*/
+
+/*.button-container button {*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 10px 20px;*/
+/*    margin: 5px;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s;*/
+/*}*/
+
+/*.button-container button:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
 /* Button.css */
 .button-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 20px 0;
+    padding: 0 15px;
 }
 
 .button-container button {
-    background-color: #007bff;
+    background-color: #334457;
     color: white;
     border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 15px 30px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 1.2em;
+    box-sizing: border-box;
 }
 
 .button-container button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .button-container button {
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
 }
