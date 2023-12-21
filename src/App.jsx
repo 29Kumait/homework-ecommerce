@@ -13,7 +13,6 @@ const categories = [
 ];
 
 function Home() {
-  // Add content or functionality for your home page here
   return <div></div>;
 }
 

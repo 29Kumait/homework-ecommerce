@@ -17,4 +17,4 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2023.3
         env:
-          QODANA_TOKEN: ${{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcmdhbml6YXRpb24iOiIzS2RMUiIsInByb2plY3QiOiJBWU5RYSIsInRva2VuIjoiQURFNncifQ.M8Be6OVtZHLgS1xltTcjf-HSc5siUxFA2KOblhXgwP4}}
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
