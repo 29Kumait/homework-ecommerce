@@ -1,15 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 function Header() {
-  return (
-    <header>
-      <h1>
-        <Link to="/">Products</Link>
-      </h1>
-    </header>
-  );
+    return (
+        <header>
+            <Link to="/">Products</Link>
+        </header>
+    );
 }
 
 export default Header;
-
-// Path: src/components/Header/Header.js

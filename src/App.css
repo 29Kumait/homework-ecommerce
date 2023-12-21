@@ -32,17 +32,64 @@ body {
 
 
 
-/* .navbar {
+
+
+/* Flexbox Grid System */
+.row {
   display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color:  rgba(22, 22, 23, .8);
-  color:  rgba(255, 255, 255, .8);
+  flex-wrap: wrap;
+  margin: 0 -15px; /* Spacing for gutters */
 }
 
-@media screen and (max-width: 600px) {
-  .navbar {
-      flex-direction: column;
-      align-items: center;
+.column {
+  flex: 1;
+  padding: 0 15px; /* Spacing for gutters */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  font-weight: 300;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+a:hover {
+  color: #BBBBBB;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .column {
+    flex-basis: 50%;
   }
-} */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .column {
+    flex-basis: 100%;
+  }
+}
+
+/* Additional Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+/* Spacing Utility */
+.spacing {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

@@ -1,6 +1,7 @@
 {
   "name": "homework-ecommerce",
   "private": true,
+  "homepage": "https://29kumait.github.io/homework-ecommerce",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

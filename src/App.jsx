@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
 import ProductsList from "./components/ProductsList/ProductsList";
@@ -14,7 +14,7 @@ const categories = [
 
 function Home() {
   // Add content or functionality for your home page here
-  return <div>Welcome to the Economise App</div>;
+  return <div></div>;
 }
 
 function App() {
@@ -24,9 +24,8 @@ function App() {
   return (
       <Router>
         <div>
-          <Link to="/">
-            <Header />
-          </Link>
+          <Header /> {/* Correct usage: Header is not inside another Link */}
+
           <Button categories={categories} onClick={setSelectedCategory} />
 
           <Routes>

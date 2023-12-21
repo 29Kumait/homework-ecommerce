@@ -1,0 +1,22 @@
+/* Header.css */
+header {
+    background-color: #161617; /* Dark background, you can adjust the color */
+    padding: 1rem 0;
+    text-align: center;
+
+}
+
+header a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 4.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header a:hover {
+    background-color: #007bff; /* Button hover color from your Button.css */
+    color: #FFFFFF;
+}
