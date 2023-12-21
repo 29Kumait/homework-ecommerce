@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
 import ProductsList from "./components/ProductsList/ProductsList";
@@ -13,6 +13,7 @@ const categories = [
 ];
 
 function Home() {
+  // Add content or functionality for your home page here
   return <div></div>;
 }
 
