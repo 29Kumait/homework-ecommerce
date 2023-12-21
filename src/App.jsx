@@ -13,7 +13,6 @@ const categories = [
 ];
 
 function Home() {
-  // Add content or functionality for your home page here
   return <div></div>;
 }
 
@@ -22,24 +21,24 @@ function App() {
   console.log(selectedCategory);
 
   return (
-      <Router>
-        <div>
-          <Header /> {/* Correct usage: Header is not inside another Link */}
+    <Router>
+      <div>
+        <Header /> {/* Correct usage: Header is not inside another Link */}
 
-          <Button categories={categories} onClick={setSelectedCategory} />
+        <Button categories={categories} onClick={setSelectedCategory} />
 
-          <Routes>
-            {categories.map((category) => (
-                <Route
-                    key={category.id}
-                    path={`/category/${category.category}`}
-                    element={<ProductsList selectedCategory={category.category} />}
-                />
-            ))}
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
-      </Router>
+        <Routes>
+          {categories.map((category) => (
+            <Route
+              key={category.id}
+              path={`/category/${category.category}`}
+              element={<ProductsList selectedCategory={category.category} />}
+            />
+          ))}
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
