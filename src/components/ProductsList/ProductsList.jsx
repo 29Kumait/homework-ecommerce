@@ -1,29 +1,25 @@
+// ProductsList.jsx
 import PropTypes from 'prop-types';
-import products from '../../fake-data/all-products';
+import { useNavigate } from 'react-router-dom';
 import './ProductsList.css';
 
-function ProductsList({ selectedCategory }) {
+function ProductsList({ products }) {
+    const navigate = useNavigate();
+
     return (
-        <div className="products-list">
-            {products
-                .filter(product => product.category === selectedCategory)
-                .map(product => (
-                    <div key={product.id} className="product-item">
-                        <img src={product.image} alt={product.title} />
-                        <div className="product-item-title">{product.title}</div>
-                        <div className="product-item-description">{product.description}</div>
-                        {/* Other product details */}
-                    </div>
-                ))}
+        <div>
+            {products.map(product => (
+                <div key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
+                    <img src={product.image} alt={product.title} />
+                    <h3>{product.title}</h3>
+                </div>
+            ))}
         </div>
     );
 }
 
-
 ProductsList.propTypes = {
-    selectedCategory: PropTypes.string.isRequired,
+    products: PropTypes.array.isRequired, // Updated to reflect actual props
 };
 
 export default ProductsList;
-
-// Path: src/components/ProductsList/ProductsList.jsx
