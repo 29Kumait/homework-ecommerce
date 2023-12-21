@@ -7,11 +7,12 @@ function ProductsList({ products }) {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <div className="products-list">
             {products.map(product => (
-                <div key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
-                    <img src={product.image} alt={product.title} />
-                    <h3>{product.title}</h3>
+                <div key={product.id} className="product-item" onClick={() => navigate(`/product/${product.id}`)}>
+                    <img src={product.image} alt={product.title} className="product-item-image"/>
+                    <h3 className="product-item-title">{product.title}</h3>
+                    {/* <p className="product-item-description">{product.description}</p> */}
                 </div>
             ))}
         </div>
@@ -19,7 +20,7 @@ function ProductsList({ products }) {
 }
 
 ProductsList.propTypes = {
-    products: PropTypes.array.isRequired, // Updated to reflect actual props
+    products: PropTypes.array.isRequired,
 };
 
 export default ProductsList;
