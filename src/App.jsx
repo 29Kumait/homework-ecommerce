@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
@@ -22,24 +23,24 @@ function App() {
   console.log(selectedCategory);
 
   return (
-      <Router>
-        <div>
-          <Header /> {/* Correct usage: Header is not inside another Link */}
+    <Router>
+      <div>
+        <Header /> {/* Correct usage: Header is not inside another Link */}
 
-          <Button categories={categories} onClick={setSelectedCategory} />
+        <Button categories={categories} onClick={setSelectedCategory} />
 
-          <Routes>
-            {categories.map((category) => (
-                <Route
-                    key={category.id}
-                    path={`/category/${category.category}`}
-                    element={<ProductsList selectedCategory={category.category} />}
-                />
-            ))}
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
-      </Router>
+        <Routes>
+          {categories.map((category) => (
+            <Route
+              key={category.id}
+              path={`/category/${category.category}`}
+              element={<ProductsList selectedCategory={category.category} />}
+            />
+          ))}
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
