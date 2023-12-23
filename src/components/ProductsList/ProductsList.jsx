@@ -15,7 +15,12 @@ function ProductsList({ selectedCategory }) {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`);
+                let url = 'https://fakestoreapi.com/products';
+                if (selectedCategory) {
+                    url = `https://fakestoreapi.com/products/category/${selectedCategory}`;
+                }
+
+                const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -28,9 +33,7 @@ function ProductsList({ selectedCategory }) {
             }
         }
 
-        if (selectedCategory) {
-            fetchProducts();
-        }
+        fetchProducts();
     }, [selectedCategory]);
 
     if (isLoading) return <div>Loading...</div>;
@@ -42,6 +45,8 @@ function ProductsList({ selectedCategory }) {
                 <div key={product.id} className="product-item" onClick={() => navigate(`/product/${product.id}`)}>
                     <img src={product.image} alt={product.title} className="product-item-image" />
                     <h3 className="product-item-title">{product.title}</h3>
+
+                    {/* <p className="product-item-description">{product.description}</p> */}
                 </div>
             ))}
         </div>

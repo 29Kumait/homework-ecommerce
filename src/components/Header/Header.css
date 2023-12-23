@@ -1,6 +1,7 @@
 /* Header.css */
 header {
-    background-color: #161617; /* Dark background, you can adjust the color */
+    background-color: #161617;
+    /* Dark background, you can adjust the color */
     padding: 1rem 0;
     text-align: center;
 
@@ -17,6 +18,6 @@ header a {
 }
 
 header a:hover {
-    background-color: #007bff; /* Button hover color from your Button.css */
+    background-color: rgba(87, 76, 51, 0.44);
     color: #FFFFFF;
 }

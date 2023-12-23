@@ -1,0 +1,36 @@
+.product-detail {
+    max-width: 800px;
+    /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Adjust for theme */
+    color: #FFFFFF;
+    /* Adjust for theme */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.product-detail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.product-detail h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.product-detail p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #FFD700;
+    /* Gold color for price, adjust as needed */
+}

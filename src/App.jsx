@@ -7,9 +7,7 @@ import ProductsList from "./components/ProductsList/ProductsList";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import './App.css';
 
-function Home() {
-  return <div></div>;
-}
+
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -45,8 +43,9 @@ function App() {
         <Button categories={categories} onClick={setSelectedCategory} />
 
         <Routes>
-          <Route path="/" element={<Home />} />
 
+          <Route path="/" element={<ProductsList />} />
+          <Route path="/" element={<ProductsList />} />
           <Route
             path={`/category/:category`}
             element={<ProductsList selectedCategory={selectedCategory} />}

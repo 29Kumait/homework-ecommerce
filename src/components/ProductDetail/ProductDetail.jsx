@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './ProductDetail.css';
 
 function ProductDetail() {
     let { id } = useParams();
@@ -32,11 +33,11 @@ function ProductDetail() {
     if (error) return <div>Error: {error}</div>;
     if (!product) return <div>Product not found</div>;
     return (
-        <div>
+        <div className="product-detail">
             <h2>{product.title}</h2>
             <img src={product.image} alt={product.title} />
             <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
+            <p className="product-price">Price: ${product.price}</p>
         </div>
     );
 }
