@@ -3,7 +3,7 @@ import './Header.css';
 
 function Header() {
     return (
-        <header>
+        <header className='container'>
             <Link to="/" className="headline">Products</Link>
             <Link to="/favorites" className="favorites-link">Favorites</Link>
         </header>
