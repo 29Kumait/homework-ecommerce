@@ -4,7 +4,8 @@ import './Header.css';
 function Header() {
     return (
         <header>
-            <Link to="/">Products</Link>
+            <Link to="/" className="headline">Products</Link>
+            <Link to="/favorites" className="favorites-link">Favorites</Link>
         </header>
     );
 }

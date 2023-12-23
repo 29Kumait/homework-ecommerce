@@ -1,51 +1,42 @@
-// ProductsList.jsx
-import PropTypes from 'prop-types';
-import './ProductsList.css';
-import { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+// FavoritesPage.jsx
+import { useContext, useEffect, useState } from 'react';
 import { FavoritesContext } from '../FavoritesContext/FavoritesContext';
-
-function ProductsList({ selectedCategory }) {
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
+const FavoritesPage = () => {
     const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
-    const [products, setProducts] = useState([]);
+    const [favoriteProducts, setFavoriteProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
-
     useEffect(() => {
-        async function fetchProducts() {
+        const fetchFavoriteProducts = async () => {
             setIsLoading(true);
-            setError(null);
             try {
-                let url = 'https://fakestoreapi.com/products';
-                if (selectedCategory) {
-                    url = `https://fakestoreapi.com/products/category/${selectedCategory}`;
-                }
-
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setProducts(data);
-            } catch (err) {
-                setError(err.message);
+                const products = await Promise.all(
+                    favorites.map(id =>
+                        fetch(`https://fakestoreapi.com/products/${id}`)
+                            .then(response => response.json())
+                    )
+                );
+                setFavoriteProducts(products);
+            } catch (error) {
+                console.error('Error fetching favorite products:', error);
             } finally {
                 setIsLoading(false);
             }
-        }
+        };
 
-        fetchProducts();
-    }, [selectedCategory]);
+        if (favorites.length > 0) {
+            fetchFavoriteProducts();
+        }
+    }, [favorites]);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-
+    if (favoriteProducts.length === 0) return <div>No favorites yet</div>;
     return (
-        <div className="products-list">
-            {products.map(product => (
+        <div>
+            {favoriteProducts.map((product) => (
                 <div key={product.id} className="product-item" onClick={() => navigate(`/product/${product.id}`)}>
                     <div className="product-item-image-wrapper">
                         <img src={product.image} alt={product.title} className="product-item-image" />
@@ -60,10 +51,6 @@ function ProductsList({ selectedCategory }) {
             ))}
         </div>
     );
-}
-
-ProductsList.propTypes = {
-    selectedCategory: PropTypes.string,
 };
 
-export default ProductsList;
+export default FavoritesPage;
