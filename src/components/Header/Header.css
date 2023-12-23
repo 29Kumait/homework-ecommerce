@@ -1,23 +1,38 @@
 /* Header.css */
 header {
-    background-color: #161617;
-    /* Dark background, you can adjust the color */
+    background-color: #FFFFFF;
     padding: 1rem 0;
     text-align: center;
-
 }
 
-header a {
-    color: #FFFFFF;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headline {
+    color: #161617;
     text-decoration: none;
     font-size: 4.2rem;
     font-weight: bold;
+    margin-right: auto;
+
+}
+
+.favorites-link {
+    color: #161617;
+    text-decoration: none;
+    font-size: 1.5rem;
+
     padding: 0.5rem 1rem;
+    margin-left: 20px;
+
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-header a:hover {
+.favorites-link:hover {
     background-color: rgba(87, 76, 51, 0.44);
     color: #FFFFFF;
 }

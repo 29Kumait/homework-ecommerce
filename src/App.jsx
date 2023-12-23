@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
 import ProductsList from "./components/ProductsList/ProductsList";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
+import { FavoritesProvider } from "./components/FavoritesContext/FavoritesContext";
+import FavoritesPage from "./components/FavoritesPage/FavoritesPage";
 import './App.css';
 
 
@@ -37,25 +39,28 @@ function App() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <Router>
-      <div>
-        <Header />
-        <Button categories={categories} onClick={setSelectedCategory} />
+    <FavoritesProvider>
+      <Router>
+        <div>
+          <Header />
+          <Button categories={categories} onClick={setSelectedCategory} />
 
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={<ProductsList />} />
-          <Route path="/" element={<ProductsList />} />
-          <Route
-            path={`/category/:category`}
-            element={<ProductsList selectedCategory={selectedCategory} />}
-          />
+            <Route path="/" element={<ProductsList />} />
+            <Route path="/" element={<ProductsList />} />
+            <Route
+              path={`/category/:category`}
+              element={<ProductsList selectedCategory={selectedCategory} />}
+            />
 
-          <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
 
-        </Routes>
-      </div>
-    </Router>
+          </Routes>
+        </div>
+      </Router>
+    </FavoritesProvider>
   );
 }
 
