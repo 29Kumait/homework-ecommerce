@@ -5,7 +5,6 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 const FavoritesPage = () => {
     const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
-
     const [favoriteProducts, setFavoriteProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();

@@ -1,47 +1,24 @@
 // ProductsList.jsx
-import PropTypes from 'prop-types';
-import './ProductsList.css';
-import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { useContext } from 'react';
 import { FavoritesContext } from '../FavoritesContext/FavoritesContext';
+import useFetch from '../../../hooks/useFetch'; // Update this path accordingly
+import PropTypes from 'prop-types';
+import './ProductsList.css';
 
 function ProductsList({ selectedCategory }) {
     const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
-
-    const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchProducts() {
-            setIsLoading(true);
-            setError(null);
-            try {
-                let url = 'https://fakestoreapi.com/products';
-                if (selectedCategory) {
-                    url = `https://fakestoreapi.com/products/category/${selectedCategory}`;
-                }
-
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setProducts(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setIsLoading(false);
-            }
-        }
-
-        fetchProducts();
-    }, [selectedCategory]);
+    const productsUrl = selectedCategory
+        ? `https://fakestoreapi.com/products/category/${selectedCategory}`
+        : 'https://fakestoreapi.com/products';
+    const { data: products, isLoading, error } = useFetch(productsUrl);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
+    if (!products) return <div>No products found</div>;
 
     return (
         <div className="products-list">
