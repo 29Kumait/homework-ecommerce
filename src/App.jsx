@@ -1,43 +1,59 @@
-import React from "react";
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// App.jsx
+import { useState, useEffect } from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
 import ProductsList from "./components/ProductsList/ProductsList";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 import './App.css';
 
-const categories = [
-  { id: 1, category: "electronics" },
-  { id: 2, category: "jewelery" },
-  { id: 3, category: "men's clothing" },
-  { id: 4, category: "women's clothing" },
-];
-
 function Home() {
-  // Add content or functionality for your home page here
   return <div></div>;
 }
 
 function App() {
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  console.log(selectedCategory);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const response = await fetch('https://fakestoreapi.com/products/categories');
+        const data = await response.json();
+        setCategories(data.map(category => ({ id: Math.random(), category })));
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <Router>
       <div>
-        <Header /> {/* Correct usage: Header is not inside another Link */}
-
+        <Header />
         <Button categories={categories} onClick={setSelectedCategory} />
 
         <Routes>
-          {categories.map((category) => (
-            <Route
-              key={category.id}
-              path={`/category/${category.category}`}
-              element={<ProductsList selectedCategory={category.category} />}
-            />
-          ))}
           <Route path="/" element={<Home />} />
+
+          <Route
+            path={`/category/:category`}
+            element={<ProductsList selectedCategory={selectedCategory} />}
+          />
+
+          <Route path="/product/:id" element={<ProductDetail />} />
+
         </Routes>
       </div>
     </Router>
