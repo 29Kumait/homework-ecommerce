@@ -3,12 +3,16 @@ header {
     background-color: #FFFFFF;
     padding: 1rem 0;
     text-align: center;
+    width: 100%;
+    /* Ensures the header takes the full width */
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    /* Center the container */
 }
 
 .headline {
@@ -17,17 +21,14 @@ header {
     font-size: 4.2rem;
     font-weight: bold;
     margin-right: auto;
-
 }
 
 .favorites-link {
     color: #161617;
     text-decoration: none;
     font-size: 1.5rem;
-
     padding: 0.5rem 1rem;
     margin-left: 20px;
-
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
